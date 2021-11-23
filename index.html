@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Library</title>
+</head>
+<body>
+    <button class="newBook">ADD NEW BOOK</button>
+
+    <div class="loginPopup">
+        <div action="" class="formPopup" id="popupForm">
+            <form action="" class="formContainer">
+                <h2>Enter Info</h2>
+                
+                <strong>TITLE</strong>
+                <input type="text" name="Book Title" id="title" placeholder="Book Title" required>
+
+                <strong>AUTHOR</strong>
+                <input type="text" name="Author" id="author" placeholder="Author" required>
+
+                <strong>PAGES</strong>
+                <input type="number" name="Number of Pages" id="pages" placeholder="# of Pages" required>
+
+                <strong>HAVE YOU READ THE BOOK?</strong>
+                <input type="checkbox" name="isRead" id="read">
+
+                <button type="submit" class="btn submit">SUBMIT</button>
+                <button type="button" class="btn cancel">CLOSE</button>
+            </form>
+        </div>
+    </div>
+
+    <table class = "table"></table>
+    <script src="script.js"></script>
+</body>
+</html>
