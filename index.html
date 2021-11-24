@@ -5,14 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,900;1,300&display=swap" rel="stylesheet">
+    
     <title>Library</title>
 </head>
 <body>
-    <button class="newBook">ADD NEW BOOK</button>
+    <div class="header">
+        <h1>LIBRARY!</h1>
+    
+        <button class="newBook">ADD NEW BOOK</button>
+    </div>
 
     <div class="loginPopup">
         <div action="" class="formPopup" id="popupForm">
-            <form action="" class="formContainer">
+            <div class="formContainer">
+                <h2>Enter Info</h2>
+                
+                <strong>TITLE</strong>
+                <input type="text" name="Book Title" id="title" placeholder="Book Title" >
+
+                <strong>AUTHOR</strong>
+                <input type="text" name="Author" id="author" placeholder="Author">
+
+                <strong>PAGES</strong>
+                <input type="number" name="Number of Pages" id="pages" placeholder="# of Pages">
+
+                <strong>HAVE YOU READ THE BOOK?</strong>
+                <input type="checkbox" name="isRead" id="read">
+
+                <button type="button" class="btn submit">SUBMIT</button>
+                <button type="button" class="btn cancel">CLOSE</button>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="loginPopup">
+        <div action="" class="formPopup" id="popupForm">
+            <form action="" class="formContainer" onsubmit="submit();return false">
                 <h2>Enter Info</h2>
                 
                 <strong>TITLE</strong>
@@ -31,7 +61,7 @@
                 <button type="button" class="btn cancel">CLOSE</button>
             </form>
         </div>
-    </div>
+    </div> -->
 
     <div class="container">
 
