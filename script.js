@@ -8,12 +8,24 @@ let data = Object.keys(myLibrary[0]);
 let btnOpen = document.querySelector('.newBook');
 let btnClose = document.querySelector('.cancel');
 let form = document.querySelector('.formPopup');
+let btnSubmit = document.querySelector('.submit');
+let titleInput = document.querySelector('#title');
+let authorInput = document.querySelector('#author');
+let pagesInput = document.querySelector('#pages');
+let isReadInput = document.querySelector('#read');
+
+btnSubmit.addEventListener('click', function(){
+    addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.value)
+    displayBooks(table, myLibrary);
+    console.log(myLibrary);
+});
+
+
 
 btnOpen.addEventListener('click', newBook);
 btnClose.addEventListener('click', ()=>form.style.display = "none");
 
 
-displayBooks(table, myLibrary);
 generateTableHead(table, data);
 
 function newBook(){
