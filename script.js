@@ -1,6 +1,6 @@
 let myLibrary = [
     {title: "Harry Potter", author: "JK Rowling", pages: 3000, isRead: true},
-    {title: "Lord of the Rings", author: "J.R.R. Tolkien", pages: 500, isRead: false}
+    {title: "Lord of the Rings", author: "J.R.R. Tolkien", pages: 500, isRead: true}
 ];
 
 let btnOpen = document.querySelector('.newBook');
@@ -13,72 +13,82 @@ let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
 let isReadInput = document.querySelector('#read');
 
+
 btnOpen.addEventListener('click', popupWindow);
 btnClose.addEventListener('click', ()=>form.style.display = "none");
 
 btnSubmit.addEventListener('click', function(){
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
-    
+    form.style.display = "none";
 });
-
-let harryPotter = new Book("Harry Potter and the order of the phoenix", "J.K. Rowling", 400, true);
 
 myLibrary.forEach(book =>{
     displayBook(book);
 })
 
-function newBook(){
-    let title = titleInput.value;
-    let author = authorInput.value;
-    let pages = pagesInput.value;
-    let isRead = isReadInput.value;
-    addBookToLibrary(title, author, pages, isRead);
-
-}
-
 function displayBook(book){
     let card = document.createElement('div');
-    let titleText = document.createElement('p');
+    let titleText = document.createElement('h3');
     let authorText = document.createElement('p');
     let pagesText = document.createElement('p');
-    
-    let span = document.createElement('span');
-    let knobs = document.createElement('div');
-    let checkbox = document.createElement('input');
-    let toggleButton = document.createElement('div');
-    let buttonCover = document.createElement('div');
-    let toggleButtonCover = document.createElement('div');
+    let readButton = document.createElement('button')
+    let delButton = document.createElement('input');
+    let box = document.createElement('div');
+    let span = document.createElement ('span');
 
-    knobs.className = "knobs";
-    checkbox.type = "checkbox";
-    checkbox.className = "checkbox";
-    toggleButton.className = "button b2";
-    toggleButton.id = "button-toggle";
-    buttonCover.className = "button-cover";
-    toggleButtonCover.className = "toggle-button-cover";
-
-    checkbox.checked = !book.isRead;
-    console.log(book.isRead);
-    knobs.appendChild(span);
-    toggleButton.append(checkbox, knobs);
-    buttonCover.appendChild(toggleButton);
-    toggleButtonCover.appendChild(buttonCover);
-    
-    titleText.textContent = '\"' + book.title + '\"';
-    authorText.textContent = book.author;
-    pagesText.textContent = book.pages + " Pages";
-    
-    
     card.className = "card";
-    card.appendChild(titleText);
-    card.appendChild(authorText);
-    card.appendChild(pagesText);
-    card.appendChild(toggleButtonCover);
+    card.id = book.title;
 
+    box.className = "box";
+    
+    delButton.type = "image";
+    delButton.src = "../Library/red-cross.png";
+    delButton.width = "50";
+    delButton.height = "50";
+
+    delButton.addEventListener('click', ()=>{
+        deleteBook(book);
+    })
+    span.textContent = book.title
+    titleText.textContent = 'Title: ';
+    titleText.appendChild(span);
+
+    authorText.textContent = "Author: " + book.author;
+    pagesText.textContent = "Pages: " + book.pages;
+  
+    if (book.isRead){
+        readButton.className = "btn-status btn-read";
+        readButton.textContent = "READ!";
+    }else{
+        readButton.className = "btn-status btn-notread";
+        readButton.textContent = "NOT READ!"
+    }
+    
+    readButton.addEventListener('click', ()=>{
+        toggleButton(readButton, book);
+    });
+
+    box.append(readButton, delButton);
+    card.append(titleText, authorText, pagesText, box);
     container.appendChild(card);
 
 }
 
+function toggleButton (button, book){
+    if (button.className.includes('btn-read')){
+        button.className = "btn-status btn-notread";
+        button.textContent = "NOT READ!";
+        book.isRead = false;
+    }else {
+        button.className = "btn-status btn-read";
+        button.textContent = "READ!";
+        book.isRead = true;
+    }
+}
+
+function deleteBook (book){
+    container.removeChild(document.getElementById(book.title));
+}
 
 function popupWindow(){
     form.style.display = "block";
@@ -92,6 +102,16 @@ function Book(title, author, pages, isRead){
 }
 
 function addBookToLibrary(title, author, pages, isRead){
+    let exists = false;
+    myLibrary.forEach(book=>{
+        if (book.title === title){
+            alert("THAT BOOK ALREADY EXISTS");
+            exists = true;
+        }
+    })
+    if (exists == false){
     let newbook = new Book(title, author, pages, isRead);
+    myLibrary.push(newbook);
     displayBook(newbook);
+    }
 }
