@@ -19,6 +19,7 @@ btnClose.addEventListener('click', ()=>form.style.display = "none");
 
 btnSubmit.addEventListener('click', function(){
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
+    form.style.display = "none";
 });
 
 myLibrary.forEach(book =>{

@@ -199,7 +199,7 @@ h1{
 
   word-wrap: normal;
   border: solid 4px;
-  background-image:linear-gradient(to bottom right, #bdc3c7,#2c3e50);
+  background-image:linear-gradient(  bottom right, #bdc3c7,#2c3e50);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
   transition: 0.3s;
   padding: 20px;
@@ -262,17 +262,27 @@ span{
   .card{
     grid-column: span 8;
   }
+
+  .newBook{
+    font-size: 1.5em;
+  }
 }
 
 @media (max-width: 800px) {
   .card{
     grid-column: span 12;
   }
+  .newBook{
+    font-size: 1.2em;
+  }
 }
 
 @media (max-width: 576px) {
   .card{
     grid-column: span 16;
+  }
+  .newBook{
+    font-size: 1em;
   }
   
 }
