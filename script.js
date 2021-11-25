@@ -24,6 +24,7 @@ btnSubmit.addEventListener('click', function(){
 let harryPotter = new Book("Harry Potter and the order of the phoenix", "J.K. Rowling", 400, true);
 
 myLibrary.forEach(book =>{
+    displayBook(book);
 })
 
 function newBook(){
@@ -40,18 +41,39 @@ function displayBook(book){
     let titleText = document.createElement('p');
     let authorText = document.createElement('p');
     let pagesText = document.createElement('p');
-    let isReadText = document.createElement('p');
+    
+    let span = document.createElement('span');
+    let knobs = document.createElement('div');
+    let checkbox = document.createElement('input');
+    let toggleButton = document.createElement('div');
+    let buttonCover = document.createElement('div');
+    let toggleButtonCover = document.createElement('div');
+
+    knobs.className = "knobs";
+    checkbox.type = "checkbox";
+    checkbox.className = "checkbox";
+    toggleButton.className = "button b2";
+    toggleButton.id = "button-toggle";
+    buttonCover.className = "button-cover";
+    toggleButtonCover.className = "toggle-button-cover";
+
+    checkbox.checked = !book.isRead;
+    console.log(book.isRead);
+    knobs.appendChild(span);
+    toggleButton.append(checkbox, knobs);
+    buttonCover.appendChild(toggleButton);
+    toggleButtonCover.appendChild(buttonCover);
     
     titleText.textContent = '\"' + book.title + '\"';
     authorText.textContent = book.author;
     pagesText.textContent = book.pages + " Pages";
-    isReadText.textContent = (book.isRead);
+    
     
     card.className = "card";
     card.appendChild(titleText);
     card.appendChild(authorText);
     card.appendChild(pagesText);
-    card.appendChild(isReadText);
+    card.appendChild(toggleButtonCover);
 
     container.appendChild(card);
 
