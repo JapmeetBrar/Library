@@ -14,29 +14,16 @@ let pagesInput = document.querySelector('#pages');
 let isReadInput = document.querySelector('#read');
 
 
-
 btnOpen.addEventListener('click', popupWindow);
 btnClose.addEventListener('click', ()=>form.style.display = "none");
 
 btnSubmit.addEventListener('click', function(){
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
-    
 });
-
-let harryPotter = new Book("Harry Potter and the order of the phoenix", "J.K. Rowling", 400, true);
 
 myLibrary.forEach(book =>{
     displayBook(book);
 })
-
-function newBook(){
-    let title = titleInput.value;
-    let author = authorInput.value;
-    let pages = pagesInput.value;
-    let isRead = isReadInput.value;
-    addBookToLibrary(title, author, pages, isRead);
-
-}
 
 function displayBook(book){
     let card = document.createElement('div');
@@ -46,6 +33,7 @@ function displayBook(book){
     let readButton = document.createElement('button')
     let delButton = document.createElement('input');
     let box = document.createElement('div');
+    let span = document.createElement ('span');
 
     card.className = "card";
     card.id = book.title;
@@ -54,14 +42,16 @@ function displayBook(book){
     
     delButton.type = "image";
     delButton.src = "../Library/red-cross.png";
-    delButton.width = "40";
-    delButton.height = "40";
+    delButton.width = "50";
+    delButton.height = "50";
 
     delButton.addEventListener('click', ()=>{
         deleteBook(book);
     })
+    span.textContent = book.title
+    titleText.textContent = 'Title: ';
+    titleText.appendChild(span);
 
-    titleText.textContent = 'Title: \"' + book.title + '\"';
     authorText.textContent = "Author: " + book.author;
     pagesText.textContent = "Pages: " + book.pages;
   
@@ -111,6 +101,16 @@ function Book(title, author, pages, isRead){
 }
 
 function addBookToLibrary(title, author, pages, isRead){
+    let exists = false;
+    myLibrary.forEach(book=>{
+        if (book.title === title){
+            alert("THAT BOOK ALREADY EXISTS");
+            exists = true;
+        }
+    })
+    if (exists == false){
     let newbook = new Book(title, author, pages, isRead);
+    myLibrary.push(newbook);
     displayBook(newbook);
+    }
 }
