@@ -137,6 +137,8 @@ input[type=checkbox]{
   align-items: center;
 }
 
+
+
 h1{
   font-size: 6em;
   line-height: 1.2em;
@@ -167,7 +169,7 @@ h1{
 }
 
 .newBook:active{
-  transform: translate3d(3px 3px 3px);
+  transform: translatey(3px);
 }
 
 .container{
@@ -199,7 +201,7 @@ h1{
 
   word-wrap: normal;
   border: solid 4px;
-  background-image:linear-gradient(  bottom right, #bdc3c7,#2c3e50);
+  background-image:linear-gradient(to bottom right, #bdc3c7,#2c3e50);
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
   transition: 0.3s;
   padding: 20px;
@@ -256,6 +258,10 @@ span{
 
 .card:hover{
   box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.65);
+}
+
+.read{
+  background-image: linear-gradient(to bottom right, rgb(39, 184, 39, 0.1),rgb(32, 143, 32));
 }
 
 @media (max-width: 1000px) {

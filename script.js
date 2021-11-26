@@ -12,12 +12,20 @@ let titleInput = document.querySelector('#title');
 let authorInput = document.querySelector('#author');
 let pagesInput = document.querySelector('#pages');
 let isReadInput = document.querySelector('#read');
+// let header = document.querySelector('.header');
 
+// header.addEventListener('mouseenter', function(e){
+//     header.style.color = "#" + Math.floor(Math.random()*16777215).toString(16);
+// })
 
 btnOpen.addEventListener('click', popupWindow);
 btnClose.addEventListener('click', ()=>form.style.display = "none");
 
 btnSubmit.addEventListener('click', function(){
+    if (titleInput.value === "" || authorInput.value === "" || pagesInput.value === ""){
+        alert ("must fill in inputs");
+        return;
+    }
     addBookToLibrary(titleInput.value, authorInput.value, pagesInput.value, isReadInput.checked);
     form.style.display = "none";
 });
@@ -36,7 +44,6 @@ function displayBook(book){
     let box = document.createElement('div');
     let span = document.createElement ('span');
 
-    card.className = "card";
     card.id = book.title;
 
     box.className = "box";
@@ -59,13 +66,15 @@ function displayBook(book){
     if (book.isRead){
         readButton.className = "btn-status btn-read";
         readButton.textContent = "READ!";
+        card.className = "card read";
     }else{
         readButton.className = "btn-status btn-notread";
         readButton.textContent = "NOT READ!"
+        card.className = "card not-read";
     }
     
     readButton.addEventListener('click', ()=>{
-        toggleButton(readButton, book);
+        toggleButton(readButton, book, card);
     });
 
     box.append(readButton, delButton);
@@ -74,15 +83,17 @@ function displayBook(book){
 
 }
 
-function toggleButton (button, book){
+function toggleButton (button, book, card){
     if (button.className.includes('btn-read')){
         button.className = "btn-status btn-notread";
         button.textContent = "NOT READ!";
         book.isRead = false;
+        card.className = "card not-read"
     }else {
         button.className = "btn-status btn-read";
         button.textContent = "READ!";
         book.isRead = true;
+        card.className = "card read";
     }
 }
 
