@@ -20,24 +20,24 @@
 
     <div class="loginPopup">
         <div action="" class="formPopup" id="popupForm">
-            <div class="formContainer">
+            <form class="formContainer">
                 <h2 class="info-header">Enter Info</h2>
                 
-                <strong>TITLE</strong>
-                <input type="text" name="Book Title" id="title" placeholder="Book Title" required = true>
+                <label for="title"><strong>TITLE</strong></label>
+                <input type="text" name="Book Title" id="title" placeholder="Book Title" required>
 
-                <strong>AUTHOR</strong>
+                <label for="author"><strong>AUTHOR</strong></label>
                 <input type="text" name="Author" id="author" placeholder="Author" required>
 
-                <strong>PAGES</strong>
+                <label for="pages"><strong>PAGES</strong></label>
                 <input type="number" name="Number of Pages" id="pages" placeholder="# of Pages" required>
 
                 <div class="subcontainer">
-                    <strong>HAVE YOU READ <br> THE BOOK?</strong>
+                    <label for="read"><strong>HAVE YOU READ <br> THE BOOK?</strong></label>
                     <input type="checkbox" name="isRead" id="read">
                 </div>
 
-                <button type="submit" class="btn submit">SUBMIT</button>
+                <button type="button" class="btn submit">SUBMIT</button>
                 <button type="button" class="btn cancel">CLOSE</button>
             </div>
         </div>
